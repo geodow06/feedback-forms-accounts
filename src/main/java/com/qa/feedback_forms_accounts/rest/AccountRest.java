@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.feedback_forms_accounts.persistence.domain.Account;
+import com.qa.feedback_forms_accounts.persistence.domain.SentAccount;
 import com.qa.feedback_forms_accounts.service.AccountService;
 
 @CrossOrigin
@@ -24,6 +26,9 @@ public class AccountRest {
 	
     @Autowired
     private AccountService service;
+    
+    @Autowired
+    private JmsTemplate jmsTemplate;
 	
     @GetMapping("${path.getAccounts}")
     public List<Account> getAccounts() {
@@ -37,7 +42,7 @@ public class AccountRest {
     
     @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {
-//        sendToQueue(account);
+        sendToQueue(account);
     	return service.addAccount(account);
     }
     
@@ -56,6 +61,11 @@ public class AccountRest {
         return service.updateAccount(account, id);
     }
     
+    
+    private void sendToQueue(Account account){
+        SentAccount accountToStore =  new SentAccount(account);
+        jmsTemplate.convertAndSend("AccountQueue", accountToStore);
+    }
     
     
 
