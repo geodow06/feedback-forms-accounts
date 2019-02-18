@@ -1,15 +1,8 @@
 package com.qa.feedback_forms_accounts.persistence.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class SentAccount {
 
-@Entity
-public class Account {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	private Long  accountID;
 	private int CohortID;
 	private boolean admin;
@@ -18,17 +11,17 @@ public class Account {
 	private String password;
 	private boolean flagged;
 	
-	public Account() {
+	public SentAccount() {
 		
 	}
 	
-	public Account(int CohortID,boolean admin,String userName, String email, String password,  boolean flagged) {
-		this.CohortID = CohortID;
-		this.admin = admin;
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-		this.flagged = flagged;
+	public SentAccount(Account account) {
+		this.CohortID = account.getCohortID();
+		this.admin = account.isAdmin();
+		this.userName = account.getUserName();
+		this.email = account.getEmail();
+		this.password = account.getPassword();
+		this.flagged = account.isFlagged();
 	}
 
 	public Long getAccountID() {
