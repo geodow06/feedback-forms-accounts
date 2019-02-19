@@ -2,9 +2,8 @@ package com.qa.feedback_forms_accounts.persistence.domain;
 
 public class SentAccount {
 
-
-	private Long  accountID;
-	private int CohortID;
+	private Long accountID;
+	private Long cohortID;
 	private boolean admin;
 	private String userName;
 	private String email;
@@ -16,7 +15,7 @@ public class SentAccount {
 	}
 	
 	public SentAccount(Account account) {
-		this.CohortID = account.getCohortID();
+		this.cohortID = account.getCohortID();
 		this.admin = account.isAdmin();
 		this.userName = account.getUserName();
 		this.email = account.getEmail();
@@ -32,12 +31,12 @@ public class SentAccount {
 		this.accountID = accountID;
 	}
 
-	public int getCohortID() {
-		return CohortID;
+	public Long getCohortID() {
+		return cohortID;
 	}
 
-	public void setCohortID(int cohortID) {
-		CohortID = cohortID;
+	public void setCohortID(Long cohortID) {
+		this.cohortID = cohortID;
 	}
 
 	public boolean isAdmin() {
