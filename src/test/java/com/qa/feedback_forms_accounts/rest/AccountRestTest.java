@@ -65,8 +65,5 @@ public class AccountRestTest {
         .body("message",equalTo("Id supplied does not exist. Id: 1111111111"));
 
     }
-	
-	
-	
 
 }
