@@ -52,12 +52,12 @@ public class AccountRest {
     }
 
     @DeleteMapping("${path.deleteAccount}")
-    public ResponseEntity<Object> deleteAccount(@PathVariable Long id) {
+    public Account deleteAccount(@PathVariable Long id) {
         return service.deleteAccount(id);
     }
 
     @PutMapping("${path.updateAccount}")
-    public ResponseEntity<Object> updateAccount(@RequestBody Account account, @PathVariable Long id) {
+    public Account updateAccount(@RequestBody Account account, @PathVariable Long id) {
         return service.updateAccount(account, id);
     }
     

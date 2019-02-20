@@ -1,4 +1,4 @@
-package com.qa.feedbackformsaccounts;
+package com.qa.feedback_forms_accounts;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -7,11 +7,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Account {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long  accountID;
-	private int CohortID;
+	private Long accountID;
+	private Long cohortID;
 	private boolean admin;
 	private String userName;
 	private String email;
@@ -22,8 +22,8 @@ public class Account {
 		
 	}
 	
-	public Account(int CohortID,boolean admin,String userName, String email, String password,  boolean flagged) {
-		this.CohortID = CohortID;
+	public Account(Long cohortID, boolean admin, String userName, String email, String password, boolean flagged) {
+		this.cohortID = cohortID;
 		this.admin = admin;
 		this.userName = userName;
 		this.email = email;
@@ -39,12 +39,12 @@ public class Account {
 		this.accountID = accountID;
 	}
 
-	public int getCohortID() {
-		return CohortID;
+	public Long getCohortID() {
+		return cohortID;
 	}
 
-	public void setCohortID(int cohortID) {
-		CohortID = cohortID;
+	public void setCohortID(Long cohortID) {
+		this.cohortID = cohortID;
 	}
 
 	public boolean isAdmin() {
@@ -86,5 +86,7 @@ public class Account {
 	public void setFlagged(boolean flagged) {
 		this.flagged = flagged;
 	}
+	
+
 	
 }
