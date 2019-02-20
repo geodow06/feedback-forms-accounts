@@ -27,10 +27,10 @@ public class AccountServiceTest {
 	public final ExpectedException exception = ExpectedException.none();
 
 	@InjectMocks
-	AccountServiceImpl service;
+	private AccountServiceImpl service;
 	
 	@Mock
-	AccountRepository repo;
+	private AccountRepository repo;
 	
 	private static final Account MOCK_ACCOUNT_1 = new Account((long) 5, false, "Taylor", "cc@qa.com","PASS1",false);
 	private static final Account MOCK_ACCOUNT_2 = new Account((long) 6, true, "Joseph", "bb@qa.com","PASS2",false);
