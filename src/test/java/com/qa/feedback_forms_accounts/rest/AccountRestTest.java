@@ -10,12 +10,12 @@ import com.qa.feedback_forms_accounts.persistence.domain.Account;
 
 public class AccountRestTest {
 	
-	String base_path ="http://localhost:8080/accounts";
-	String getAccounts="/getAccounts";
-	String postAccount= "/createAccount"; 
-	String getAccount = "/getAccountById/";
-	String updateAccount = "/updateAccount/";
-	String deleteAccount= "/deleteAccount/";
+	private String base_path ="http://localhost:8080/accounts";
+	private String getAccounts="/getAccounts";
+	private String postAccount= "/createAccount"; 
+	private String getAccount = "/getAccountById/";
+	private String updateAccount = "/updateAccount/";
+	private String deleteAccount= "/deleteAccount/";
 	
 	
 	@Test
