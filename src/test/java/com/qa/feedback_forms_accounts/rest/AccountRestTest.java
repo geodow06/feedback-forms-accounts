@@ -37,7 +37,7 @@ public class AccountRestTest {
 	
 	@Test
     public void verifyCreateAccount() {
-		Account account = new Account((long) 1,false,"fortune","f@qa.com","pwd",false);
+		Account account = new Account((long) 1,false,"fortune","osadolor","fortune@qa.com","pwd",false);
 		given()
         .contentType("application/json")
         .body(account)
@@ -48,7 +48,7 @@ public class AccountRestTest {
 	
 	@Test
     public void verifyUpdateAccount() {
-		Account account = new Account((long) 20,true,"updated_UserName","updated@qa.com","updated_pwd",true);
+		Account account = new Account((long) 20,true,"updated_Name","updated_LastName","updated@qa.com","updated_pwd",true);
 		given()
         .contentType("application/json")
         .body(account)

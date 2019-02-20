@@ -30,7 +30,10 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	public Account addAccount(Account account) {
-		return repo.save(account);
+		if(account.getEmail().endsWith("@qa.com") || account.getEmail().endsWith("@academytrainee.com")) {
+			return repo.save(account);
+		}
+		return null;
 	}
 
 
