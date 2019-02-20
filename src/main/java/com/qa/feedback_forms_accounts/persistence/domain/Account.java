@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Account {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long accountID;
@@ -86,5 +86,7 @@ public class Account {
 	public void setFlagged(boolean flagged) {
 		this.flagged = flagged;
 	}
+	
+
 	
 }

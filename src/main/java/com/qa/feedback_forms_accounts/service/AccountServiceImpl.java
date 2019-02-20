@@ -17,52 +17,50 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 
 	@Autowired
-    private AccountRepository repo;
+	private AccountRepository repo;
 
-    @Override
-    public List<Account> getAccounts() {
-        return repo.findAll();
-    }
-
-    @Override
-    public Account getAccount(Long id) {
-        Optional<Account> account = repo.findById(id);
-        return account.orElseThrow(() -> new AccountNotFoundException(id));
-    }
-
-    @Override
-    public Account addAccount(Account account) {
-        return repo.save(account);
-    }
-
-    @Override
-    public ResponseEntity<Object> deleteAccount(Long id) {
-        if(accountExists(id)){
-            repo.deleteById(id);
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
-
-    @Override
-    public ResponseEntity<Object> updateAccount(Account account, Long id) {
-        if(accountExists(id)){
-            account.setAccountID(id);
-            repo.save(account);
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
+	@Override
+	public List<Account> getAccounts() {
+		return repo.findAll();
+	}
+	
+	@Override
+	public Account addAccount(Account account) {
+		return repo.save(account);
+	}
 
 
-    private boolean accountExists(Long id){
-        Optional<Account> accountOptional = repo.findById(id);
-        return accountOptional.isPresent();
-    }
+	@Override
+	public Account getAccount(Long id) {
+		Optional<Account> account = repo.findById(id);
+		return account.orElseThrow(() -> new AccountNotFoundException(id));
+	}
+
+	@Override
+	public Account deleteAccount(Long id) {
+		Optional<Account> account = repo.findById(id);
+		if (accountExists (id)) {
+			repo.deleteById(id);
+		}
+		return account.orElseThrow(() -> new AccountNotFoundException(id));
+	}
+
+	@Override
+	public Account updateAccount(Account account, Long id) {
+		if (accountExists(id)) {
+			account.setAccountID(id);
+			repo.save(account);
+		}
+		Optional<Account> accountInDB = repo.findById(id);
+		return accountInDB.orElseThrow(() -> new AccountNotFoundException(id));
+	}
+
+	private boolean accountExists(Long id) {
+		Optional<Account> accountOptional = repo.findById(id);
+		return accountOptional.isPresent();
+	}
 }

@@ -18,8 +18,6 @@ public class AccountRestTest {
 	String deleteAccount= "/deleteAccount/";
 	
 	
-
-	
 	@Test
     public void verifyStatus200() {
         given().when().get(base_path + getAccounts).then().statusCode(200);
@@ -27,34 +25,14 @@ public class AccountRestTest {
 	
 	@Test
     public void verifyGetAll() {
-		given().when().get(base_path + getAccounts).then()
-        .body(containsString(""));    
-	}
-	
-	@Test
-    public void verifyGetAll2() {
 		given().when().get(base_path + getAccounts).then().statusCode(200); 
 	}
 	
-	
 	@Test
     public void verifyGetAccount() {
-		Account account = new Account((long) 99,false,"test","test@qa.com","pwd",false);
 		given()
-        .contentType("application/json")
-        .body(account)
-        .when().post(base_path + postAccount ).then()
-        .statusCode(200);
-	}
-	
-	@Test
-    public void verifyUpdateAccount() {
-		Account account = new Account((long) 20,true,"updated_UserName","updated@qa.com","updated_pwd",true);
-		given()
-        .contentType("application/json")
-        .body(account)
-        .when().put(base_path + updateAccount +"1" ).then()
-        .statusCode(200);
+        .when().get(base_path + getAccount + "1111111111" ).then()
+        .body("message",equalTo("Id supplied does not exist. Id: 1111111111"));
 	}
 	
 	@Test
@@ -67,55 +45,26 @@ public class AccountRestTest {
         .statusCode(200);
 	}
 	
+	
+	@Test
+    public void verifyUpdateAccount() {
+		Account account = new Account((long) 20,true,"updated_UserName","updated@qa.com","updated_pwd",true);
+		given()
+        .contentType("application/json")
+        .body(account)
+        .when().put(base_path + updateAccount +"1111111111" ).then()
+        .body("message",equalTo("Id supplied does not exist. Id: 1111111111"));
+	}
+
+
+	
 	@Test
     public void verifyDeleteAccount() {
-        given().pathParam("accountID", 1)
-        .when().delete(base_path + deleteAccount +"{accountID}")
-        .then().statusCode(200);
+		given()
+        .when().delete(base_path + deleteAccount + "1111111111" ).then()
+        .body("message",equalTo("Id supplied does not exist. Id: 1111111111"));
 
     }
-	
-	
-	
-//	@Test
-//    public void verifyGetAccount() {
-//		Account account = new Account((long) 99,false,"test","test@qa.com","pwd",false);
-//		given()
-//        .contentType("application/json")
-//        .body(account)
-//        .when().post(base_path + postAccount ).then()
-//        .statusCode(200);
-//		
-//		given().when().get(base_path + getAccount + "1").then()
-//        .body("accountID",equalTo(1),
-//        		"admin",equalTo(false),
-//        		"userName",equalTo("test"),
-//        		"email",equalTo("test@qa.com"),
-//        		"password",equalTo("pwd"),
-//        		"flagged",equalTo(false),
-//        		"cohortID",equalTo(99)
-//        		);
-//	}
-//	
-//	@Test
-//    public void verifyUpdateAccount() {
-//		Account account = new Account((long) 20,true,"updated_UserName","updated@qa.com","updated_pwd",true);
-//		given()
-//        .contentType("application/json")
-//        .body(account)
-//        .when().put(base_path + updateAccount +"1" ).then()
-//        .statusCode(200);
-//		
-//		given().when().get(base_path + getAccount + "1").then()
-//        .body("accountID",equalTo(1),
-//        		"admin",equalTo(true),
-//        		"userName",equalTo("updated_UserName"),
-//        		"email",equalTo("updated@qa.com"),
-//        		"password",equalTo("updated_pwd"),
-//        		"flagged",equalTo(true),
-//        		"cohortID",equalTo(20)
-//        		);
-//	}
 	
 	
 	
