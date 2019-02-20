@@ -75,10 +75,7 @@ public class AccountServiceTest {
 	@Test
 	public void updateAccountTest() {
 		Mockito.when(repo.findById((long) 1)).thenReturn(MOCK_ACCOUNT_OPTIONAL);
-//		Mockito.when(repo.findById((long) 3)).thenReturn(MOCK_NULL_OPTIONAL);
 		assertEquals(MOCK_ACCOUNT_1, service.updateAccount(MOCK_ACCOUNT_1, (long) 1));
-//		assertEquals(MOCK_NOT_FOUND_RESPONSE, service.updateAccount(MOCK_ACCOUNT_1, (long) 3));
-//		Mockito.verify(repo).findById((long) 1);
 	}
 
 }
