@@ -16,6 +16,7 @@ public class SentAccount {
 	}
 	
 	public SentAccount(Account account) {
+		this.accountID = account.getAccountID();
 		this.cohortID = account.getCohortID();
 		this.admin = account.isAdmin();
 		this.firstName = account.getFirstName();

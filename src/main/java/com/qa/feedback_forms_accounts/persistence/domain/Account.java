@@ -15,16 +15,16 @@ public class Account {
 	private Long accountID;
 	private Long cohortID;
 	private boolean admin;
-//	@Column(nullable=false)
-//	@Size(min=1)
+	@Column(nullable=false)
+	@Size(min=1)
 	private String firstName;
-//	@Column(nullable=false)
-//	@Size(min=1)
+	@Column(nullable=false)
+	@Size(min=1)
 	private String lastName;
-//	@Column(nullable=false, unique=true)
+	@Column(nullable=false, unique=true)
 	private String email;
-//	@Column(nullable=false)
-//	@Size(min=6, max =18)
+	@Column(nullable=false)
+	@Size(min=6, max =18)
 	private String password;
 	private boolean flagged;
 	
