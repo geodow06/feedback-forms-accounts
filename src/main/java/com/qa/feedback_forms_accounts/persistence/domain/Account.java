@@ -24,7 +24,6 @@ public class Account {
 	@Column(nullable=false, unique=true)
 	private String email;
 	@Column(nullable=false)
-	@Size(min=6, max =18)
 	private String password;
 	private boolean flagged;
 	
