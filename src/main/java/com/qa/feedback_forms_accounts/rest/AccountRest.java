@@ -34,12 +34,7 @@ public class AccountRest {
     public List<Account> getAccounts() {
         return service.getAccounts();
     }
-    
-    @GetMapping("/test")
-    public String test() {
-        return "end points work";
-    }
-    
+     
     @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {
     	SentAccount accountToSend = new SentAccount(account);
