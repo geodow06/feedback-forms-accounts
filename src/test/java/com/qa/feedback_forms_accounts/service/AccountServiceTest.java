@@ -32,8 +32,8 @@ public class AccountServiceTest {
 	@Mock
 	private AccountRepository repo;
 	
-	private static final Account MOCK_ACCOUNT_1 = new Account((long) 5, false, "Taylor", "cc@qa.com","PASS1",false);
-	private static final Account MOCK_ACCOUNT_2 = new Account((long) 6, true, "Joseph", "bb@qa.com","PASS2",false);
+	private static final Account MOCK_ACCOUNT_1 = new Account((long) 5, false, "Taylor","White", "TaylorWhite@qa.com","PASS1",false);
+	private static final Account MOCK_ACCOUNT_2 = new Account((long) 6, true, "Joseph","Brown", "JosephBrown@qa.com","PASS2",false);
 	
 	private static final Optional<Account> MOCK_ACCOUNT_OPTIONAL = Optional.of(MOCK_ACCOUNT_1);
 	private static final Optional<Account> MOCK_NULL_OPTIONAL = Optional.empty();

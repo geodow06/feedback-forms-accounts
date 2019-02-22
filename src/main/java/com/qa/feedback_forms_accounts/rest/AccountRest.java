@@ -37,7 +37,10 @@ public class AccountRest {
      
     @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {
-        sendToQueue(account);
+    	SentAccount accountToSend = new SentAccount(account);
+    	sendToQueue(accountToSend);
+        
+        
     	return service.addAccount(account);
     }
     
@@ -57,9 +60,8 @@ public class AccountRest {
     }
     
     
-    private void sendToQueue(Account account){
-        SentAccount accountToStore =  new SentAccount(account);
-        jmsTemplate.convertAndSend("AccountQueue", accountToStore);
+    private void sendToQueue(SentAccount sentAccount){
+        jmsTemplate.convertAndSend("AccountQueue", sentAccount);
     }
     
     
