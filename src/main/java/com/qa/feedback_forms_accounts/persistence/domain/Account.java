@@ -1,11 +1,9 @@
 package com.qa.feedback_forms_accounts.persistence.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Account {
@@ -15,15 +13,9 @@ public class Account {
 	private Long accountID;
 	private Long cohortID;
 	private boolean admin;
-	@Column(nullable=false)
-	@Size(min=1)
 	private String firstName;
-	@Column(nullable=false)
-	@Size(min=1)
 	private String lastName;
-	@Column(nullable=false, unique=true)
 	private String email;
-	@Column(nullable=false)
 	private String password;
 	private boolean flagged;
 	
