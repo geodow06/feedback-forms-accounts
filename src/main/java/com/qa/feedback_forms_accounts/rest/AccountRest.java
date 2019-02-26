@@ -27,6 +27,12 @@ public class AccountRest {
     @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {    	
 		if(account.getEmail().endsWith("@qa.com") || account.getEmail().endsWith("@academytrainee.com")) {
+			if(account.getEmail().endsWith("@qa.com")) {
+				account.setAdmin(true);
+			}
+			else {
+				account.setAdmin(false);
+			}
 	    	SentAccount accountToSend = new SentAccount(account);
 			sendToQueue(accountToSend);
 		}
